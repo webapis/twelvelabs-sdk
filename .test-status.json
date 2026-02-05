@@ -1,0 +1,10 @@
+{
+  "EngineResource": {
+    "list": {
+      "status": "pass",
+      "testName": "EngineResource.list should call the get method with the correct URL",
+      "duration": 3,
+      "failureMessages": []
+    }
+  }
+}

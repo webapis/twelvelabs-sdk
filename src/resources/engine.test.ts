@@ -1,22 +1,31 @@
-import { EngineResource } from './engine';
-import { Client } from '../core/client';
+import {EngineResource} from './engine';
+import {Client} from '../core/client';
 
-// Mock the client to avoid making real API calls
 jest.mock('../core/client');
 
+// Use this naming convention: "ClassName.methodName"
 describe('EngineResource.list', () => {
-  it('should call the get method with the correct URL', async () => {
-    const client = new Client('mock-api-key');
-    const engineResource = new EngineResource(client);
+    it('should call the get method with the correct URL', async () => {
+        const client = new Client('mock-api-key');
+        const engineResource = new EngineResource(client);
 
-    // Mock the get method to return a sample response
-    const mockGet = jest.spyOn(client, 'get').mockResolvedValue({
-      data: [{ id: 'marengo2.5', ready: true }],
+        const mockGet = jest.spyOn(client, 'get').mockResolvedValue({
+            data: [{id: 'marengo2.5', ready: true}],
+        });
+
+        await engineResource.list();
+
+        expect(mockGet).toHaveBeenCalledWith('/engines');
     });
 
-    await engineResource.list();
+    it('should handle errors correctly', async () => {
+        const client = new Client('mock-api-key');
+        const engineResource = new EngineResource(client);
 
-    // Assert that the get method was called with the correct endpoint
-    expect(mockGet).toHaveBeenCalledWith('/engines');
-  });
+        const mockGet = jest.spyOn(client, 'get').mockRejectedValue(
+            new Error('API Error')
+        );
+
+        await expect(engineResource.list()).rejects.toThrow('API Error');
+    });
 });

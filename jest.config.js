@@ -1,12 +1,27 @@
-/** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  // We'll have separate configs for unit and integration tests later,
-  // for now this will find all tests.
-  testMatch: ['**/src/**/*.test.ts', '**/integration/**/*.test.ts'],
+  roots: ['<rootDir>/src'],
+  testMatch: ['**/*.test.ts'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  collectCoverageFrom: [
+    'src/**/*.ts',
+    '!src/**/*.d.ts',
+    '!src/index.ts',
+  ],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['text', 'lcov', 'json', 'html'],
   reporters: [
     'default',
-    '<rootDir>/tools/typedoc-test-status/jest-reporter.ts'
+    'jest-html-reporters'
   ],
+  verbose: true,
+  transform: {
+    '^.+\\.ts$': ['ts-jest', {
+      tsconfig: {
+        esModuleInterop: true,
+        allowSyntheticDefaultImports: true,
+      },
+    }],
+  },
 };
