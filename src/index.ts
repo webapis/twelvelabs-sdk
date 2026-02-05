@@ -1,23 +1,15 @@
-import axios, { AxiosInstance } from 'axios';
+import { Client } from './core/client';
+import { EngineResource } from './resources/engine';
 
 export class TwelveLabs {
-  private client: AxiosInstance;
-  private apiKey: string;
+  private client: Client;
+  public engine: EngineResource;
 
   constructor(apiKey: string) {
-    this.apiKey = apiKey;
-    this.client = axios.create({
-      baseURL: 'https://api.twelvelabs.io/v1.3',
-      headers: {
-        'x-api-key': this.apiKey,
-        'Content-Type': 'application/json',
-      },
-    });
-  }
-
-  // Placeholder for future methods
-  public async getIndexes(): Promise<any> {
-      // Implementation to come
-      return Promise.resolve([]);
+    this.client = new Client(apiKey);
+    this.engine = new EngineResource(this.client);
   }
 }
+
+export { TwelveLabsError, APIError } from './core/error';
+export * from './resources/engine';

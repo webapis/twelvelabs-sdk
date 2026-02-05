@@ -12,7 +12,8 @@
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "lint": "eslint src/**/*.ts",
     "test": "jest",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "docs": "typedoc"
   },
   "keywords": [
     "twelvelabs",
@@ -34,6 +35,7 @@
     "prettier": "^2.8.4",
     "ts-jest": "^29.0.5",
     "tsup": "^6.6.3",
+    "typedoc": "^0.24.8",
     "typescript": "^5.0.2"
   },
   "dependencies": {
