@@ -2,6 +2,7 @@ import { Client } from '../core/client';
 
 /**
  * Represents a video understanding engine provided by Twelve Labs.
+ * @category Resources.Engine
  */
 export interface Engine {
   /**
@@ -9,7 +10,7 @@ export interface Engine {
    */
   id: string;
   /**
-   * The author or creator of the engine (e.g., `Twelve Labs`).
+   * The author or creator of the engine (e.g., Twelve Labs).
    */
   author: string;
   /**
@@ -28,6 +29,7 @@ export interface Engine {
 
 /**
  * The resource for interacting with the Engines API.
+ * @category Resources.Engine
  */
 export class EngineResource {
   private client: Client;

@@ -3,6 +3,7 @@ import { Engine } from './engine';
 
 /**
  * Configuration for an engine when creating an index.
+ * @category Resources.Index
  */
 export interface EngineOption {
   /**
@@ -17,6 +18,7 @@ export interface EngineOption {
 
 /**
  * Represents a Twelve Labs video index.
+ * @category Resources.Index
  */
 export interface Index {
   /**
@@ -43,6 +45,7 @@ export interface Index {
 
 /**
  * Options for paginated requests.
+ * @category Shared
  */
 export interface PaginationOptions {
   /**
@@ -59,6 +62,7 @@ export interface PaginationOptions {
 
 /**
  * A generic paginated response from the API.
+ * @category Shared
  */
 export interface PaginatedResponse<T> {
   /**
@@ -78,6 +82,7 @@ export interface PaginatedResponse<T> {
 
 /**
  * The resource for interacting with the Indexes API.
+ * @category Resources.Index
  */
 export class IndexResource {
   private client: Client;

@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse, AxiosError } from 'axios';
+import axios, { AxiosInstance, AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
 import { APIError, TwelveLabsError } from './error';
 
 const DEFAULT_BASE_URL = 'https://api.twelvelabs.io/v1.3';
@@ -43,8 +43,8 @@ export class Client {
     return this.axiosInstance.get(url, { params });
   }
 
-  public async post<T>(url: string, data?: any): Promise<T> {
-    return this.axiosInstance.post(url, data);
+  public async post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+    return this.axiosInstance.post(url, data, config);
   }
 
   public async put<T>(url: string, data?: any): Promise<T> {

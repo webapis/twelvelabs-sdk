@@ -1,5 +1,6 @@
 /**
  * The base class for all SDK-related errors.
+ * @category Errors
  */
 export class TwelveLabsError extends Error {
   constructor(message: string) {
@@ -10,6 +11,7 @@ export class TwelveLabsError extends Error {
 
 /**
  * Thrown when the Twelve Labs API returns a non-2xx response.
+ * @category Errors
  */
 export class APIError extends TwelveLabsError {
   /**

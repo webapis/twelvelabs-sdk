@@ -1,12 +1,20 @@
 {
   "entryPoints": ["src/index.ts"],
   "out": "docs/api",
-  "plugin": [],
+  "plugin": ["./tools/typedoc-test-status"],
   "theme": "default",
   "name": "Twelve Labs SDK",
   "readme": "README.md",
   "includeVersion": true,
   "excludePrivate": true,
   "excludeProtected": true,
-  "excludeInternal": true
+  "excludeInternal": true,
+  "categorizeByGroup": true,
+  "categoryOrder": [
+    "Core",
+    "Resources",
+    "Shared Types",
+    "Errors",
+    "*"
+  ]
 }
